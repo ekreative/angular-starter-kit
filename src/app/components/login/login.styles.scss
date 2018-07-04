@@ -1,0 +1,16 @@
+.login {
+  margin-top: 20%;
+  mat-card {
+    h1 {
+      text-align: center;
+    }
+    form {
+      margin: 20px 10px;
+      .form-group {
+        .form-field {
+          width: 100%;
+        }
+      }
+    }
+  }
+}

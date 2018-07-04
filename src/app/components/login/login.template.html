@@ -1,0 +1,38 @@
+<div class="col-md-6 offset-md-3 login">
+  <mat-card>
+    <h1>Login</h1>
+    <form name="form" [formGroup]="form.formGroup" novalidate>
+      <div class="form-group">
+        <mat-form-field class="form-field">
+          <input matInput placeholder="First Name" type="text" class="form-control" name="practitionerFirstName" formControlName="practitionerFirstName" required />
+        </mat-form-field>
+         <div class="alert alert-danger" *ngIf="form.getControl('practitionerFirstName').invalid && (form.getControl('practitionerFirstName').dirty || form.getControl('practitionerFirstName').touched)">
+           <div *ngIf="form.getControl('practitionerFirstName').errors.required" class="help-block">First Name is required</div>
+         </div>
+      </div>
+      <div class="form-group">
+        <mat-form-field class="form-field">
+          <input matInput placeholder="Surname" type="text" class="form-control" name="practitionerSurName" formControlName="practitionerSurName" required />
+        </mat-form-field>
+         <div class="alert alert-danger" *ngIf="form.getControl('practitionerSurName').invalid && (form.getControl('practitionerSurName').dirty || form.getControl('practitionerSurName').touched)">
+           <div *ngIf="form.getControl('practitionerSurName').errors.required" class="help-block">Surname is required</div>
+         </div>
+      </div>
+      <div class="form-group">
+        <mat-form-field class="form-field">
+          <input matInput placeholder="Password" type="password" class="form-control" name="password" formControlName="password" required />
+        </mat-form-field>
+        <div class="alert alert-danger" *ngIf="form.getControl('password').invalid && (form.getControl('password').dirty || form.getControl('password').touched)">
+          <div *ngIf="form.getControl('password').errors.required" class="help-block">Password is required</div>
+          <div *ngIf="form.getControl('password').hasError('minlength')" class="help-block">Password must has more than 8 characters</div>
+        </div>
+      </div>
+      <div class="form-group">
+        <button mat-raised-button color="primary" (click)="login()" class="btn btn-primary">Login</button>
+        <img *ngIf="loading"
+             src="data:image/gif;base64,R0lGODlhEAAQAPIAAP///wAAAMLCwkJCQgAAAGJiYoKCgpKSkiH/C05FVFNDQVBFMi4wAwEAAAAh/hpDcmVhdGVkIHdpdGggYWpheGxvYWQuaW5mbwAh+QQJCgAAACwAAAAAEAAQAAADMwi63P4wyklrE2MIOggZnAdOmGYJRbExwroUmcG2LmDEwnHQLVsYOd2mBzkYDAdKa+dIAAAh+QQJCgAAACwAAAAAEAAQAAADNAi63P5OjCEgG4QMu7DmikRxQlFUYDEZIGBMRVsaqHwctXXf7WEYB4Ag1xjihkMZsiUkKhIAIfkECQoAAAAsAAAAABAAEAAAAzYIujIjK8pByJDMlFYvBoVjHA70GU7xSUJhmKtwHPAKzLO9HMaoKwJZ7Rf8AYPDDzKpZBqfvwQAIfkECQoAAAAsAAAAABAAEAAAAzMIumIlK8oyhpHsnFZfhYumCYUhDAQxRIdhHBGqRoKw0R8DYlJd8z0fMDgsGo/IpHI5TAAAIfkECQoAAAAsAAAAABAAEAAAAzIIunInK0rnZBTwGPNMgQwmdsNgXGJUlIWEuR5oWUIpz8pAEAMe6TwfwyYsGo/IpFKSAAAh+QQJCgAAACwAAAAAEAAQAAADMwi6IMKQORfjdOe82p4wGccc4CEuQradylesojEMBgsUc2G7sDX3lQGBMLAJibufbSlKAAAh+QQJCgAAACwAAAAAEAAQAAADMgi63P7wCRHZnFVdmgHu2nFwlWCI3WGc3TSWhUFGxTAUkGCbtgENBMJAEJsxgMLWzpEAACH5BAkKAAAALAAAAAAQABAAAAMyCLrc/jDKSatlQtScKdceCAjDII7HcQ4EMTCpyrCuUBjCYRgHVtqlAiB1YhiCnlsRkAAAOwAAAAAAAAAAAA=="/>
+        <a [routerLink]="['/registration']" class="btn btn-link">Registration</a>
+      </div>
+    </form>
+  </mat-card>
+</div>
