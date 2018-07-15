@@ -4,18 +4,10 @@
     <form name="form" [formGroup]="form.formGroup" novalidate>
       <div class="form-group">
         <mat-form-field class="form-field">
-          <input matInput placeholder="First Name" type="text" class="form-control" name="practitionerFirstName" formControlName="practitionerFirstName" required />
+          <input matInput placeholder="Email" type="text" class="form-control" name="email" formControlName="email" required />
         </mat-form-field>
-         <div class="alert alert-danger" *ngIf="form.getControl('practitionerFirstName').invalid && (form.getControl('practitionerFirstName').dirty || form.getControl('practitionerFirstName').touched)">
-           <div *ngIf="form.getControl('practitionerFirstName').errors.required" class="help-block">First Name is required</div>
-         </div>
-      </div>
-      <div class="form-group">
-        <mat-form-field class="form-field">
-          <input matInput placeholder="Surname" type="text" class="form-control" name="practitionerSurName" formControlName="practitionerSurName" required />
-        </mat-form-field>
-         <div class="alert alert-danger" *ngIf="form.getControl('practitionerSurName').invalid && (form.getControl('practitionerSurName').dirty || form.getControl('practitionerSurName').touched)">
-           <div *ngIf="form.getControl('practitionerSurName').errors.required" class="help-block">Surname is required</div>
+         <div class="alert alert-danger" *ngIf="form.getControl('email').invalid && (form.getControl('email').dirty || form.getControl('email').touched)">
+           <div *ngIf="form.getControl('email').errors.required" class="help-block">Email is required</div>
          </div>
       </div>
       <div class="form-group">

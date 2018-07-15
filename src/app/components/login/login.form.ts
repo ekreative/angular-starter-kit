@@ -17,13 +17,11 @@ export default class RegistrationForm {
   // set form fields with validation rules
   public createForm() {
     this.formGroup = this.formBuilder.group({
-      practitionerFirstName: new FormControl(this.model.practitionerFirstName, [Validators.required]),
-      practitionerSurName: new FormControl(this.model.practitionerSurName, [Validators.required]),
+      email: new FormControl(this.model.email, [Validators.required]),
       password: new FormControl(this.model.password, [Validators.required, Validators.minLength(8)]),
     });
     this.formGroup.valueChanges.subscribe(data => {
-      this.model.practitionerFirstName = data.practitionerFirstName;
-      this.model.practitionerSurName = data.practitionerSurName;
+      this.model.email = data.email;
       this.model.password = data.password;
     });
   }

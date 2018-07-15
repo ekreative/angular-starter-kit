@@ -1,12 +1,15 @@
 import { Component, OnInit, OnDestroy, NO_ERRORS_SCHEMA } from '@angular/core';
 import { Router } from '@angular/router';
+import { Store } from '@ngrx/store';
+
 import RegistrationModel from './registration.model';
 import RegistrationForm from './registration.form';
-import { BusService } from '../../services/bus.service';
-import { EventsService } from '../../services/events.service';
+import { State } from '../../reducers/index';
+import { SHOW_HEADER, OVERLAY_START } from '../../actions/header.action';
+import { Registration, REGISTRATION_REQUEST } from '../../actions/registration.action';
 
 @Component({
-  selector: 'registration-component',
+  selector: 'app-registration-component',
   templateUrl: './registration.template.html',
   styleUrls: ['./registration.styles.scss']
 })
@@ -14,13 +17,11 @@ export class RegistrationComponent implements OnInit, OnDestroy {
 
   private model: RegistrationModel;
   public form: RegistrationForm;
-  public loading = false;
   public isFormErrorMessage: boolean = false;
 
   constructor(
-    private router: Router,
-    private bus: BusService,
-    private events: EventsService
+    private store: Store<State>,
+    private router: Router
   ) {
     this.model = new RegistrationModel();
     this.form = new RegistrationForm(this.model);
@@ -32,37 +33,19 @@ export class RegistrationComponent implements OnInit, OnDestroy {
     this.isFormErrorMessage = true;
   }
 
-  // start validation functionality
-  private submit(): void {
-    // this.bus.publish(this.events.notified.validation.form.aggregation, this.form.isValid);
-    // this.bus.publish(this.events.notified.validation.form.action);
-  }
-
   // start registration request
   public registration(): void {
-    this.bus.publish(this.events.requested.data.registration, this.form.model);
+    this.store.dispatch({ type: OVERLAY_START });
+    this.store.dispatch({
+      type: REGISTRATION_REQUEST,
+      payload: this.form.model
+    });
   }
 
-  // subscribe on validation success/failure
-  public subscribe(): void {
-    //  this.bus.subscribe(this.events.received.validation.failure, this.invalidForm, this);
-    //  this.bus.subscribe(this.events.received.validation.success, this.registration, this);
-   }
-
-   // unsubscribe on validation success/failure
-   public unSubscribe(): void {
-    //  this.bus.unsubscribe(this.events.received.validation.failure, this.invalidForm);
-    //  this.bus.unsubscribe(this.events.received.validation.success, this.registration);
-   }
-
    // make subscribe on a component initialization
-   public ngOnInit(): void {
-     this.subscribe();
-   }
+   public ngOnInit(): void {}
 
    // make unsubscribe before destroying component
-   public ngOnDestroy(): void {
-     this.unSubscribe();
-   }
+   public ngOnDestroy(): void {}
 
 }

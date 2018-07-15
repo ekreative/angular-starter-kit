@@ -1,11 +1,8 @@
 export default class RegistrationModel {
-  public practitionerFirstName: string = '';
-  public practitionerLastName: string = '';
-  public practitionerSurName: string = '';
-  public practitionerSex: string = '';
-  public practitionerDateBirth: string = '';
-  public practitionerPosition: string = '';
-  public practitionerImage: string = '';
-  public practitionerEmail: string = '';
+  public firstName: string = '';
+  public lastName: string = '';
+  public birthday: string = '';
+  public phone: string = '';
+  public email: string = '';
   public password: string = '';
 }

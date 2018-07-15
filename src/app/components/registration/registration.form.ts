@@ -18,24 +18,20 @@ export default class RegistrationForm {
 
   public createForm(): void {
     this.formGroup = this.formBuilder.group({
-      practitionerFirstName: new FormControl(this.model.practitionerFirstName, [Validators.required]),
-      practitionerLastName: new FormControl(this.model.practitionerLastName, [Validators.required]),
-      practitionerSurName: new FormControl(this.model.practitionerSurName, [Validators.required]),
-      practitionerDateBirth: new FormControl(this.model.practitionerDateBirth, [Validators.required]),
-      practitionerSex: new FormControl(this.model.practitionerSex, [Validators.required]),
-      practitionerPosition: new FormControl(this.model.practitionerPosition, [Validators.required]),
+      firstName: new FormControl(this.model.firstName, [Validators.required]),
+      lastName: new FormControl(this.model.lastName, [Validators.required]),
+      birthday: new FormControl(this.model.birthday, [Validators.required]),
+      phone: new FormControl(this.model.phone, [Validators.required]),
       password: new FormControl(this.model.password, [Validators.required, Validators.minLength(8)]),
-      practitionerEmail: new FormControl(this.model.practitionerEmail, [Validators.email])
+      email: new FormControl(this.model.email, [Validators.email])
     });
     this.formGroup.valueChanges.subscribe(data => {
-      this.model.practitionerFirstName = data.practitionerFirstName;
-      this.model.practitionerLastName = data.practitionerLastName;
-      this.model.practitionerSurName = data.practitionerSurName;
-      this.model.practitionerDateBirth = format(data.practitionerDateBirth, 'YYYY-MM-DD');
-      this.model.practitionerSex = data.practitionerSex;
-      this.model.practitionerPosition = data.practitionerPosition;
+      this.model.firstName = data.firstName;
+      this.model.lastName = data.lastName;
       this.model.password = data.password;
-      this.model.practitionerEmail = data.practitionerEmail;
+      this.model.phone = format(data.phone, 'YYYY-MM-DD');
+      this.model.email = data.email;
+      this.model.birthday = data.birthday;
     });
   }
 
