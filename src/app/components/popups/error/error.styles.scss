@@ -1,0 +1,51 @@
+
+.container {
+  width: 100%;
+  display: inline;
+  font-family: Roboto;
+  padding: 0;
+  .title {
+    text-align: center;
+    padding-bottom: 5px;
+    margin-bottom: -10px;
+    h1 {
+      // color: $modal-title-color;
+      font-size: 17px;
+      font-weight: 500;
+    }
+  }
+
+  .messageContainer {
+    margin: 10px auto 0;
+  }
+
+  p {
+    // color: $modal-information-color;
+    font-size: 12px;
+    font-weight: 400;
+    width: 90%;
+  }
+}
+
+.navigation {
+  text-align: center;
+  width: 100%;
+  button {
+    cursor: pointer;
+    width: 50%;
+    height: 45px;
+    border-radius: 55px;
+    // border: $modal-navigation-button-border;
+    // background-color: $modal-navigation-button-background-color;
+    outline: none;
+    font-size: 14px;
+    font-weight: 500;
+    text-transform: uppercase;
+  }
+  .pay-now {
+    // color: $modal-navigation-pay-now-color;
+    font-size: 14px;
+    font-weight: 500;
+    text-transform: uppercase;
+  }
+}

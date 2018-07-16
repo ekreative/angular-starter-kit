@@ -1,0 +1,16 @@
+.registration {
+  mat-card {
+    margin-top: 20%;
+    h1 {
+      text-align: center;
+    }
+    form {
+      margin: 20px 10px;
+      .form-group {
+        .form-field {
+          width: 100%;
+        }
+      }
+    }
+  }
+}

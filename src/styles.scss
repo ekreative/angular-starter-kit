@@ -1,0 +1,43 @@
+/* You can add global styles to this file, and also import other style files */
+@import "~bootstrap/dist/css/bootstrap.min.css";
+@import '~bootstrap/dist/css/bootstrap.css';
+@import "~@angular/material/prebuilt-themes/pink-bluegrey.css";
+@import "./styles/globals";
+// @import "~font-awesome/css/font-awesome.min.css";
+
+$breakpoints: (
+  'xs-phone': 320px,
+  'phone': 480px,
+  'tablet': 768px,
+  'desktop': 1024px,
+  'widescreen': 1200px
+);
+
+// keywords
+$media-expressions: (
+  'screen': 'screen',
+  'print': 'print',
+  'handheld': 'handheld',
+  'landscape': '(orientation: landscape)',
+  'portrait': '(orientation: portrait)',
+  'retina2x': '(-webkit-min-device-pixel-ratio: 1.5), (min-resolution: 144dpi)',
+  'retina3x': '(-webkit-min-device-pixel-ratio: 2.5), (min-resolution: 240dpi)'
+);
+
+// @import '../node_modules/include-media/dist/include-media';
+@import '~@angular/material/theming';
+@include mat-core();
+
+$ip-primary: mat-palette($mat-indigo);
+$ip-accent: mat-palette($mat-red, 600, 700, 900);
+$ip-theme: mat-light-theme($ip-primary, $ip-accent);
+$ip-theme-light: mat-light-theme($ip-primary, $ip-accent);
+
+// .indigo-pink {
+//   @include angular-material-theme($ip-theme);
+// }
+
+// .indigo-pink-dark {
+//   @include angular-material-theme($ip-theme-dark);
+// }
+@include angular-material-theme($ip-theme-light);

@@ -1,0 +1,22 @@
+<mat-dialog-content class="container">
+  <div class="title">
+    <h1>{{data.status ? data.status : '500'}}</h1>
+  </div>
+  <div class="messageContainer">
+      <p>
+        {{data.message ? data.message : 'We detected an error. Please, try again in 5 minutes...'}}
+      </p>
+  </div>
+</mat-dialog-content>
+<mat-dialog-actions>
+  <div class="navigation">
+    <button
+      mat-raised-button
+      class="pay-now"
+      name="button"
+      mat-dialog-close
+      matDialogClose>
+        close
+    </button>
+  </div>
+</mat-dialog-actions>
