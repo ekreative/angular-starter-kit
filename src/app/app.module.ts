@@ -107,11 +107,11 @@ import { RegistrationEffect } from './effects/registration.effect';
       useClass: HeadersInterceptor,
       multi: true
     },
-    // {
-    //   provide: HTTP_INTERCEPTORS,
-    //   useClass: EmptyResponseBodyErrorInterceptor,
-    //   multi: true
-    // },
+    {
+      provide: HTTP_INTERCEPTORS,
+      useClass: EmptyResponseBodyErrorInterceptor,
+      multi: true
+    },
     {
       provide: HTTP_INTERCEPTORS,
       useClass: LoggingInterceptor,
