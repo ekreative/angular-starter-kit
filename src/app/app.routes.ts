@@ -8,7 +8,7 @@ import { LoginComponent } from './components/login/login.component';
 import { RegistrationComponent } from './components/registration/registration.component';
 
 // Guards
-// import { AuthenticationGuard } from './guards/authentication-guard'; -> comming soon
+import { AuthenticationGuard } from './guards/authentication-guard';
 
 export const routes: Routes = [
   {
@@ -21,7 +21,8 @@ export const routes: Routes = [
   },
   {
     path: 'home',
-    component: HomeComponent
+    component: HomeComponent,
+    canActivate: [AuthenticationGuard]
   },
   // {
   //   path: '**',

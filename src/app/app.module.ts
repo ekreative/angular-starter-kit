@@ -36,6 +36,9 @@ import { RoutingConfig } from './app.routes';
 // Services
 import { RequestService } from './services/request.service';
 
+// Guards
+import {AuthenticationGuard} from './guards/authentication-guard';
+
 // Interceptors
 import { HeadersInterceptor } from './interceptors/interceptors.header';
 import { EmptyResponseBodyErrorInterceptor } from './interceptors/interceptors.empty';
@@ -95,17 +98,20 @@ import { RegistrationEffect } from './effects/registration.effect';
     // Services
     RequestService,
 
+    // Guards
+    AuthenticationGuard,
+
     // Interceptors
     {
       provide: HTTP_INTERCEPTORS,
       useClass: HeadersInterceptor,
       multi: true
     },
-    {
-      provide: HTTP_INTERCEPTORS,
-      useClass: EmptyResponseBodyErrorInterceptor,
-      multi: true
-    },
+    // {
+    //   provide: HTTP_INTERCEPTORS,
+    //   useClass: EmptyResponseBodyErrorInterceptor,
+    //   multi: true
+    // },
     {
       provide: HTTP_INTERCEPTORS,
       useClass: LoggingInterceptor,
