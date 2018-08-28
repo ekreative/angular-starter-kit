@@ -9,29 +9,26 @@ import { Actions, Effect } from '@ngrx/effects';
 import { Observable, of } from 'rxjs';
 import { catchError, map, mergeMap } from 'rxjs/operators';
 
-import { State } from '../reducers/index';
+import { State } from '../reducers';
 import {
-  LoginAction,
-  LOGIN_REQUEST,
-  LOGIN_REQUEST_SUCCESS,
-  LOGIN_REQUEST_FAILURE } from '../actions/login.action';
+  DataAction,
+  DATA_REQUEST,
+  DATA_REQUEST_SUCCESS,
+  DATA_REQUEST_FAILURE } from '../actions/data.action';
 import { OVERLAY_FINISH } from '../actions/header.action';
-import { PostCredentialsRequest, PostCredentialsResponse } from './interfaces/login.interfaces';
+import { GetDataResponse } from './interfaces/data.interfaces';
 
 @Injectable()
 export class GetDataEffect {
 
-  private options: GetOptions<PostCredentialsResponse>;
-  // login request
+  private options: GetOptions<GetDataResponse[]>;
   @Effect()
-  public login$: Observable<any> = this.actions$
-    .ofType(LOGIN_REQUEST)
+  public data$: Observable<any> = this.actions$
+    .ofType(DATA_REQUEST)
     .pipe(
       mergeMap(action => {
-        // this.options.body.email = action['payload']['email'];
-        // this.options.body.password = action['payload']['password'];
-        this.requestService.get<PostCredentialsResponse>(this.options);
-        return of({ type: 'LOGIN_REQUEST_PROCESSING' });
+        this.requestService.get<GetDataResponse[]>(this.options);
+        return of({ type: 'DATA_REQUEST_PROCESSING' });
       })
     );
 
@@ -44,10 +41,6 @@ export class GetDataEffect {
     // request config
     this.options = {
       url: '/users',
-      // body: {
-      //   email: '',ч
-      //   password: ''
-      // },
       handlers: {
         success: this.success.bind(this),
         error: this.error.bind(this)
@@ -55,18 +48,18 @@ export class GetDataEffect {
     };
   }
   // set data on success
-  public success(data: PostCredentialsResponse): void {
+  public success(data: GetDataResponse[]): void {
     this.store.dispatch({ type: OVERLAY_FINISH });
     this.store.dispatch({
-      type: LOGIN_REQUEST_SUCCESS,
-      payload: {}
+      type: DATA_REQUEST_SUCCESS,
+      payload: { data }
     });
   }
   // error handler
   public error(httpErrorResponse: HttpErrorResponse): void {
     this.store.dispatch({ type: OVERLAY_FINISH });
     this.store.dispatch({
-      type: LOGIN_REQUEST_FAILURE,
+      type: DATA_REQUEST_FAILURE,
       payload: {
         error: httpErrorResponse
       }

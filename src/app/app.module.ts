@@ -60,6 +60,7 @@ import { ErrorComponent } from './components/popups/error/error.component';
 import { Reducers, State } from './reducers/index';
 
 // Effects
+import { GetDataEffect } from './effects/get-data.effect';
 import { LoginEffect } from './effects/login.effect';
 import { LogoutEffect } from './effects/logout.effect';
 import { RegistrationEffect } from './effects/registration.effect';
@@ -85,9 +86,10 @@ import { RegistrationEffect } from './effects/registration.effect';
     HttpClientModule,
     StoreModule.forRoot(Reducers),
     EffectsModule.forRoot([
+      GetDataEffect,
       LoginEffect,
       LogoutEffect,
-      RegistrationEffect,]),
+      RegistrationEffect]),
     StoreDevtoolsModule.instrument({ maxAge: 10 }),
     MatDialogModule,
     MatButtonModule,
