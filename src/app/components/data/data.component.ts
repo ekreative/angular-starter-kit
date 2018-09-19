@@ -2,7 +2,7 @@ import { Component, OnInit } from '@angular/core';
 import { Store } from '@ngrx/store';
 import { State } from '../../reducers';
 import { OVERLAY_START } from '../../actions/header.action';
-import { DATA_REQUEST } from '../../actions/data.action';
+import { Data, DATA_REQUEST } from '../../actions/data.action';
 import { Observable } from 'rxjs';
 
 @Component({
@@ -12,7 +12,7 @@ import { Observable } from 'rxjs';
 })
 export class DataComponent implements OnInit {
 
-  public data: Observable<any>;
+  public data: Observable<Data>;
 
   constructor(
       private _store: Store<State>

@@ -1,9 +1,9 @@
-import { Component, OnInit, OnDestroy } from '@angular/core';
+import { Component, OnDestroy, OnInit } from '@angular/core';
 import { Store } from '@ngrx/store';
 import { State } from '../../reducers';
-import {OVERLAY_START} from '../../actions/header.action';
-import {DATA_REQUEST} from '../../actions/data.action';
-import {Observable, Subscription} from 'rxjs';
+import { OVERLAY_START } from '../../actions/header.action';
+import { Data, DATA_REQUEST } from '../../actions/data.action';
+import { Observable, Subscription } from 'rxjs';
 
 @Component({
   selector: 'app-subscribe',
@@ -12,7 +12,7 @@ import {Observable, Subscription} from 'rxjs';
 })
 export class SubscribeComponent implements OnInit, OnDestroy {
 
-  public data$: Observable<any>;
+  public data$: Observable<Data>;
   private subscription: Subscription;
   public data: any = [];
 
@@ -20,7 +20,8 @@ export class SubscribeComponent implements OnInit, OnDestroy {
       private _store: Store<State>
   ) {
     this.data$ = this._store.select('data');
-    this.subscription = this.data$.subscribe(data => {
+    this.subscription = this.data$
+    .subscribe((data: Data) => {
       if (data) {
         this.data = data.data;
       }

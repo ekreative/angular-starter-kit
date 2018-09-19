@@ -1,7 +1,7 @@
 import { Action } from '@ngrx/store';
 
 export class Data {
-  private data?: any;
+  public data?: any;
 }
 
 export const DATA_REQUEST = 'DATA_REQUEST';
