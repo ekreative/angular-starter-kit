@@ -1,9 +1,10 @@
 import { NgModule } from '@angular/core';
-import { RouterModule, Routes, CanActivate } from '@angular/router';
+import { RouterModule, Routes } from '@angular/router';
 
 // Components
 import { HomeComponent } from './components/home/home.component';
 import { DataComponent } from './components/data/data.component';
+import { SubscribeComponent } from './components/subscribe/subscribe.component';
 import { LoginComponent } from './components/login/login.component';
 import { RegistrationComponent } from './components/registration/registration.component';
 import { NotFoundComponent } from './components/not-found/not-found.component';
@@ -28,6 +29,10 @@ export const routes: Routes = [
   {
     path: 'data',
     component: DataComponent,
+  },
+  {
+    path: 'subscribe',
+    component: SubscribeComponent,
   },
   {
     path: 'profile',

@@ -1,7 +1,7 @@
 import { TestBed, inject } from '@angular/core/testing';
 
 import { RequestService } from './request.service';
-import { HttpClient, HttpParams, HttpErrorResponse, HttpHandler, HttpHeaders } from '@angular/common/http';
+import { HttpClient, HttpHandler } from '@angular/common/http';
 
 describe('RequestService', () => {
   beforeEach(() => {

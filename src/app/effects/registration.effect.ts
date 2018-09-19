@@ -1,18 +1,17 @@
 import { Injectable } from '@angular/core';
-import { Store, Action } from '@ngrx/store';
+import { Store } from '@ngrx/store';
 import { Router } from '@angular/router';
-import { HttpClient, HttpErrorResponse } from '@angular/common/http';
+import { HttpErrorResponse } from '@angular/common/http';
 import { RequestService } from '../services/request.service';
 import { PostOptions } from '../services/interfaces/request.interfaces';
 
-import { Actions, Effect } from '@ngrx/effects';
+import {Actions, Effect, ofType} from '@ngrx/effects';
 import { Observable, of } from 'rxjs';
-import { catchError, map, mergeMap } from 'rxjs/operators';
+import { mergeMap } from 'rxjs/operators';
 
-import { State } from '../reducers/index';
+import { State } from '../reducers';
 import { LOGIN_REQUEST } from '../actions/login.action';
 import {
-  RegistrationAction,
   REGISTRATION_REQUEST,
   REGISTRATION_REQUEST_SUCCESS,
   REGISTRATION_REQUEST_FAILURE } from '../actions/registration.action';
@@ -27,7 +26,7 @@ export class RegistrationEffect {
   // registration effect
   @Effect()
   public registration$: Observable<any> = this.actions$
-  .ofType(REGISTRATION_REQUEST)
+  .pipe(ofType(REGISTRATION_REQUEST))
   .pipe(
     mergeMap(action => {
       Object.keys(action['payload']).forEach((key: string) => {

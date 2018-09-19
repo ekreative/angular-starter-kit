@@ -1,11 +1,3 @@
-import {
-  StoreModule,
-  Store,
-  ActionReducerMap,
-  compose,
-  combineReducers } from '@ngrx/store';
-import { InjectionToken } from '@angular/core';
-
 import * as loginReducer from './login.reducer';
 import * as logoutReducer from './logout.reducer';
 import * as registrationReducer from './registration.reducer';

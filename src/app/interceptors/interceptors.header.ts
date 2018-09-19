@@ -7,9 +7,9 @@ import {
   HttpInterceptor,
   HttpRequest,
 } from '@angular/common/http';
-import {Observable, of} from 'rxjs';
-import {catchError, map} from 'rxjs/operators';
-import {Router} from '@angular/router';
+import { Observable } from 'rxjs';
+import { map } from 'rxjs/operators';
+import { Router } from '@angular/router';
 
 /*
   Using interceptors is all about changing outgoing requests and incoming responses
@@ -19,12 +19,11 @@ import {Router} from '@angular/router';
 export class HeadersInterceptor implements HttpInterceptor {
   // private uuid: string = localStorage.getItem('uuid') ? localStorage.getItem('uuid') : uuid();
 
-  constructor(
-      private router: Router) {
+  constructor(private router: Router) {
   }
 
   public intercept(req: HttpRequest<any>, next: HttpHandler): Observable<HttpEvent<any>> {
-    let interceptHeaders = req.headers.set('Content-Type', 'application/json');
+    const interceptHeaders = req.headers.set('Content-Type', 'application/json');
 
     if (!req.url.match('/login')) {
       // interceptHeaders = interceptHeaders.set('X-SESSION-TOKEN', localStorage.getItem('currentUserToken'));

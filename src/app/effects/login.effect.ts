@@ -1,22 +1,22 @@
 import { Injectable } from '@angular/core';
-import { Store, Action } from '@ngrx/store';
+import { Store } from '@ngrx/store';
 import { Router } from '@angular/router';
-import { HttpClient, HttpErrorResponse } from '@angular/common/http';
+import { HttpErrorResponse } from '@angular/common/http';
 import { RequestService } from '../services/request.service';
 import { PostOptions } from '../services/interfaces/request.interfaces';
 
-import { Actions, Effect } from '@ngrx/effects';
+import {Actions, Effect, ofType} from '@ngrx/effects';
 import { Observable, of } from 'rxjs';
-import { catchError, map, mergeMap } from 'rxjs/operators';
+import { mergeMap } from 'rxjs/operators';
 
-import { State } from '../reducers/index';
+import { State } from '../reducers';
 import {
   LoginAction,
   LOGIN_REQUEST,
   LOGIN_REQUEST_SUCCESS,
   LOGIN_REQUEST_FAILURE } from '../actions/login.action';
 import { OVERLAY_FINISH } from '../actions/header.action';
-import { PostCredentialsRequest, PostCredentialsResponse } from './interfaces/login.interfaces'
+import { PostCredentialsRequest, PostCredentialsResponse } from './interfaces/login.interfaces';
 
 @Injectable()
 export class LoginEffect {
@@ -25,7 +25,7 @@ export class LoginEffect {
   // login request
   @Effect()
   public login$: Observable<any> = this.actions$
-    .ofType(LOGIN_REQUEST)
+    .pipe(ofType(LOGIN_REQUEST))
     .pipe(
       mergeMap(action => {
         this.options.body.email = action['payload']['email'];

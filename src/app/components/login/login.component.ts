@@ -5,7 +5,7 @@ import { Store } from '@ngrx/store';
 
 import LoginModel from './login.model';
 import LoginForm from './login.form';
-import { State } from '../../reducers/index';
+import { State } from '../../reducers';
 import { SHOW_HEADER, OVERLAY_START } from '../../actions/header.action';
 import { Login, LOGIN_REQUEST } from '../../actions/login.action';
 

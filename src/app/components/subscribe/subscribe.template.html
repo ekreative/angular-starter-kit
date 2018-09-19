@@ -2,7 +2,7 @@
     <mat-card class="text-center">
         <h1>Data</h1>
         <ul>
-            <li *ngFor="let item of (data | async)?.data">
+            <li *ngFor="let item of data">
                 {{item.login}}
             </li>
         </ul>

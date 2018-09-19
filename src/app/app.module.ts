@@ -51,13 +51,14 @@ import { LoginComponent } from './components/login/login.component';
 import { RegistrationComponent } from './components/registration/registration.component';
 import { HeaderComponent } from './components/header/header.component';
 import { DataComponent } from './components/data/data.component';
+import { SubscribeComponent } from './components/subscribe/subscribe.component';
 import { ProfileComponent } from './components/profile/profile.component';
 import { NotFoundComponent } from './components/not-found/not-found.component';
 import { ModalComponent } from './components/popups/modal/modal.component';
 import { ErrorComponent } from './components/popups/error/error.component';
 
 // Reducers
-import { Reducers, State } from './reducers/index';
+import { Reducers } from './reducers';
 
 // Effects
 import { GetDataEffect } from './effects/get-data.effect';
@@ -73,6 +74,7 @@ import { RegistrationEffect } from './effects/registration.effect';
     RegistrationComponent,
     HeaderComponent,
     DataComponent,
+    SubscribeComponent,
     ProfileComponent,
     NotFoundComponent,
     ModalComponent,

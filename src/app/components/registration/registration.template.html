@@ -28,12 +28,12 @@
       </div>
       <div class="form-group">
         <mat-form-field class="form-field">
-          <input matInput [matDatepicker]="picker" formControlName="birthday" placeholder="Date Of Birht">
+          <input matInput [matDatepicker]="picker" formControlName="birthday" placeholder="Date Of Birth">
           <mat-datepicker-toggle matSuffix [for]="picker"></mat-datepicker-toggle>
           <mat-datepicker #picker></mat-datepicker>
         </mat-form-field>
         <div class="alert alert-danger" *ngIf="form.getControl('birthday').invalid && (form.getControl('birthday').dirty || form.getControl('birthday').touched)">
-          <div *ngIf="form.getControl('birthday').errors.required">Date Of Birht is required</div>
+          <div *ngIf="form.getControl('birthday').errors.required">Date Of Birth is required</div>
         </div>
       </div>
       <div class="form-group">

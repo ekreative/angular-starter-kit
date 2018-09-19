@@ -1,17 +1,16 @@
 import { Injectable } from '@angular/core';
-import { Store, Action } from '@ngrx/store';
+import { Store } from '@ngrx/store';
 import { Router } from '@angular/router';
-import { HttpClient, HttpErrorResponse } from '@angular/common/http';
+import { HttpErrorResponse } from '@angular/common/http';
 import { RequestService } from '../services/request.service';
 import { GetOptions } from '../services/interfaces/request.interfaces';
 
-import { Actions, Effect } from '@ngrx/effects';
+import {Actions, Effect, ofType} from '@ngrx/effects';
 import { Observable, of } from 'rxjs';
-import { catchError, map, mergeMap } from 'rxjs/operators';
+import { mergeMap } from 'rxjs/operators';
 
 import { State } from '../reducers';
 import {
-  DataAction,
   DATA_REQUEST,
   DATA_REQUEST_SUCCESS,
   DATA_REQUEST_FAILURE } from '../actions/data.action';
@@ -24,7 +23,7 @@ export class GetDataEffect {
   private options: GetOptions<GetDataResponse[]>;
   @Effect()
   public data$: Observable<any> = this.actions$
-    .ofType(DATA_REQUEST)
+    .pipe(ofType(DATA_REQUEST))
     .pipe(
       mergeMap(action => {
         this.requestService.get<GetDataResponse[]>(this.options);

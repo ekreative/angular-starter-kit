@@ -4,14 +4,14 @@ import {
   HttpEvent,
   HttpHandler,
   HttpInterceptor,
-  HttpRequest, HttpResponse,
+  HttpRequest
 } from '@angular/common/http';
-import {Observable, of, throwError} from 'rxjs';
+import {Observable, throwError} from 'rxjs';
 import {catchError, map} from 'rxjs/operators';
 
 /*
   Using interceptors is all about changing outgoing requests and incoming responses
-  Here we are using it for loggingч
+  Here we are using it for logging
 */
 @Injectable()
 export class LoggingInterceptor implements HttpInterceptor {

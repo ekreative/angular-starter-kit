@@ -4,11 +4,8 @@ import { FormsModule, ReactiveFormsModule } from '@angular/forms';
 import { RouterTestingModule } from '@angular/router/testing';
 import {
   MatInputModule,
-  MatFormFieldModule } from "@angular/material";
+  MatFormFieldModule } from '@angular/material';
 import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
-
-import { BusService } from '../../services/bus.service';
-import { EventsService } from '../../services/events.service';
 
 import { RegistrationComponent } from './registration.component';
 
@@ -29,10 +26,7 @@ describe('RegistrationComponent', () => {
         MatFormFieldModule,
         BrowserAnimationsModule
       ],
-      providers: [
-        BusService,
-        EventsService
-      ],
+      providers: [],
       schemas: [ NO_ERRORS_SCHEMA ]
     })
     .compileComponents();
