@@ -1,0 +1,40 @@
+@import '../styles';
+/*
+ * Implementation of themes
+ */
+// @mixin themify($themes) {
+//   @each $theme, $map in $themes {
+//     .theme-#{$theme} & {
+//       $theme-map: () !global;
+//       @each $key, $submap in $map {
+//         $value: map-get(map-get($themes, $theme), '#{$key}');
+//         $theme-map: map-merge($theme-map, ($key: $value)) !global;
+//       }
+//       @content;
+//       $theme-map: null !global;
+//     }
+//   }
+// }
+//
+// @function themed($key) {
+//   @return map-get($theme-map, $key);
+// }
+// Mixin to manage responsive breakpoints
+// @author Hugo Giraudel
+// @param {String} $breakpoint - Breakpoint name
+// @require $breakpoints
+@mixin respond-to($breakpoint) {
+  // If the key exists in the map
+  @if map-has-key($breakpoints, $breakpoint) {
+    // Prints a media query based on the value
+    @media (max-width: map-get($breakpoints, $breakpoint)) {
+      @content;
+    }
+  }
+
+    // If the key doesn't exist in the map
+  @else {
+    @warn "Unfortunately, no value could be retrieved from `#{$breakpoint}`. "
+        + "Available breakpoints are: #{map-keys($breakpoints)}.";
+  }
+}

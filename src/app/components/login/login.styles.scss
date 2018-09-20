@@ -1,0 +1,49 @@
+.login {
+  mat-card {
+    h1 {
+      text-align: center;
+    }
+    form {
+      margin: 20px 10px;
+      .form-group {
+        margin: 50px 50px 0;
+        h2 {
+          color: black;
+          font-size: 12px;
+          font-weight: 400;
+          text-transform: uppercase;
+        }
+        input {
+          border-radius: 7px;
+          border: black;
+          color: black;
+          font-size: 14px;
+          font-weight: 400;
+          &::-webkit-input-placeholder {
+            color: grey;
+            font-size: 14px;
+            font-weight: 400;
+          } /* Chrome/Opera/Safari */
+          &::-moz-placeholder {
+            color: grey;
+            font-size: 14px;
+            font-weight: 400;
+          } /* Firefox 19+ */
+          &:-ms-input-placeholder {
+            color: grey;
+            font-size: 14px;
+            font-weight: 400;
+          } /* IE 10+ */
+          &:-moz-placeholder { /* Firefox 18- */
+            color: grey;
+            font-size: 14px;
+            font-weight: 400;
+          }
+        }
+        .form-field {
+          width: 100%;
+        }
+      }
+    }
+  }
+}
