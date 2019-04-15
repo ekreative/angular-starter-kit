@@ -1,16 +1,15 @@
 import { Injectable } from '@angular/core';
 import { Store, Action } from '@ngrx/store';
 import { Router } from '@angular/router';
-import { HttpClient, HttpErrorResponse } from '@angular/common/http';
+import { HttpErrorResponse } from '@angular/common/http';
 import { RequestService } from '../services/request.service';
 import { PostOptions } from '../services/interfaces/request.interfaces';
-import { Actions, Effect } from '@ngrx/effects';
+import {Actions, Effect, ofType} from '@ngrx/effects';
 import { Observable, of } from 'rxjs';
-import { catchError, map, mergeMap } from 'rxjs/operators';
+import { mergeMap } from 'rxjs/operators';
 
-import { State } from '../reducers/index';
+import { State } from '../reducers';
 import {
-  LogoutAction,
   LOGOUT_REQUEST,
   LOGOUT_REQUEST_SUCCESS,
   LOGOUT_REQUEST_FAILURE
@@ -26,7 +25,7 @@ export class LogoutEffect {
   // logout effect
   @Effect()
   public login$: Observable<Action> = this.actions$
-    .ofType(LOGOUT_REQUEST)
+    .pipe(ofType(LOGOUT_REQUEST))
     .pipe(
       mergeMap(action => {
         this.requestService.post<object, object>(this.options);

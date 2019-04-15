@@ -36,6 +36,9 @@ import { RoutingConfig } from './app.routes';
 // Services
 import { RequestService } from './services/request.service';
 
+// Guards
+import {AuthenticationGuard} from './guards/authentication-guard';
+
 // Interceptors
 import { HeadersInterceptor } from './interceptors/interceptors.header';
 import { EmptyResponseBodyErrorInterceptor } from './interceptors/interceptors.empty';
@@ -47,13 +50,18 @@ import { HomeComponent } from './components/home/home.component';
 import { LoginComponent } from './components/login/login.component';
 import { RegistrationComponent } from './components/registration/registration.component';
 import { HeaderComponent } from './components/header/header.component';
+import { DataComponent } from './components/data/data.component';
+import { SubscribeComponent } from './components/subscribe/subscribe.component';
+import { ProfileComponent } from './components/profile/profile.component';
+import { NotFoundComponent } from './components/not-found/not-found.component';
 import { ModalComponent } from './components/popups/modal/modal.component';
 import { ErrorComponent } from './components/popups/error/error.component';
 
 // Reducers
-import { Reducers, State } from './reducers/index';
+import { Reducers } from './reducers';
 
 // Effects
+import { GetDataEffect } from './effects/get-data.effect';
 import { LoginEffect } from './effects/login.effect';
 import { LogoutEffect } from './effects/logout.effect';
 import { RegistrationEffect } from './effects/registration.effect';
@@ -65,6 +73,10 @@ import { RegistrationEffect } from './effects/registration.effect';
     LoginComponent,
     RegistrationComponent,
     HeaderComponent,
+    DataComponent,
+    SubscribeComponent,
+    ProfileComponent,
+    NotFoundComponent,
     ModalComponent,
     ErrorComponent
   ],
@@ -76,9 +88,10 @@ import { RegistrationEffect } from './effects/registration.effect';
     HttpClientModule,
     StoreModule.forRoot(Reducers),
     EffectsModule.forRoot([
+      GetDataEffect,
       LoginEffect,
       LogoutEffect,
-      RegistrationEffect,]),
+      RegistrationEffect]),
     StoreDevtoolsModule.instrument({ maxAge: 10 }),
     MatDialogModule,
     MatButtonModule,
@@ -94,6 +107,9 @@ import { RegistrationEffect } from './effects/registration.effect';
 
     // Services
     RequestService,
+
+    // Guards
+    AuthenticationGuard,
 
     // Interceptors
     {

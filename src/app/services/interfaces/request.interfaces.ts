@@ -1,4 +1,4 @@
-import { HttpClient, HttpParams, HttpErrorResponse, HttpHeaders } from '@angular/common/http';
+import { HttpParams, HttpErrorResponse, HttpHeaders } from '@angular/common/http';
 
 export interface Handlers<TResponseBody> {
   success(data: TResponseBody);
