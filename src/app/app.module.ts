@@ -1,37 +1,26 @@
 import { BrowserModule } from '@angular/platform-browser';
 import { NgModule } from '@angular/core';
+import { StoreModule } from '@ngrx/store';
+import { EffectsModule } from '@ngrx/effects';
+import { StoreDevtoolsModule } from '@ngrx/store-devtools';
 import { FormsModule, ReactiveFormsModule } from '@angular/forms';
 import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
 import { HTTP_INTERCEPTORS, HttpClientModule, HttpClient } from '@angular/common/http';
-import { EffectsModule } from '@ngrx/effects';
-import { StoreModule, Store, ActionReducerMap, combineReducers } from '@ngrx/store';
-import { StoreDevtoolsModule } from '@ngrx/store-devtools';
 import {
   MatDialogModule,
   MatButtonModule,
   MatInputModule,
-  // MatListModule,
-  // MatSelectModule,
   MatCardModule,
-  // MatRadioModule,
-  // MatTooltipModule,
   MatMenuModule,
-  // MatIconModule,
-  // MatTableModule,
-  // MatSliderModule,
-  // MatTabsModule,
   MatToolbarModule,
   MatDatepickerModule,
-  MatNativeDateModule,
-  // MatCheckboxModule,
-  // MatPaginatorModule,
-  // MatExpansionModule,
-  // MatProgressBarModule,
-  // MatGridListModule
+  MatNativeDateModule
 } from '@angular/material';
 
+import { environment } from '../environments/environment';
+
 // Routing
-import { RoutingConfig } from './app.routes';
+import { AppRoutingModule } from './app-routing.module';
 
 // Services
 import { RequestService } from './services/request.service';
@@ -58,7 +47,7 @@ import { ModalComponent } from './components/popups/modal/modal.component';
 import { ErrorComponent } from './components/popups/error/error.component';
 
 // Reducers
-import { Reducers } from './reducers';
+import { reducers, metaReducers } from './reducers';
 
 // Effects
 import { GetDataEffect } from './effects/get-data.effect';
@@ -82,17 +71,14 @@ import { RegistrationEffect } from './effects/registration.effect';
   ],
   imports: [
     BrowserModule,
+    AppRoutingModule,
+    StoreModule.forRoot(reducers, { metaReducers }),
+    EffectsModule.forRoot([GetDataEffect, LoginEffect, LogoutEffect, RegistrationEffect]),
+    StoreDevtoolsModule.instrument({ maxAge: 25, logOnly: environment.production }),
     FormsModule,
     ReactiveFormsModule,
     BrowserAnimationsModule,
     HttpClientModule,
-    StoreModule.forRoot(Reducers),
-    EffectsModule.forRoot([
-      GetDataEffect,
-      LoginEffect,
-      LogoutEffect,
-      RegistrationEffect]),
-    StoreDevtoolsModule.instrument({ maxAge: 10 }),
     MatDialogModule,
     MatButtonModule,
     MatInputModule,
@@ -100,8 +86,7 @@ import { RegistrationEffect } from './effects/registration.effect';
     MatMenuModule,
     MatToolbarModule,
     MatDatepickerModule,
-    MatNativeDateModule,
-    RoutingConfig
+    MatNativeDateModule
   ],
   providers: [
 
@@ -131,4 +116,4 @@ import { RegistrationEffect } from './effects/registration.effect';
   bootstrap: [AppComponent],
   entryComponents: [ErrorComponent, ModalComponent]
 })
-export class AppModule {}
+export class AppModule { }
