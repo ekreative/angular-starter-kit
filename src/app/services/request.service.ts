@@ -7,13 +7,13 @@ import {
   DeleteOptions
 } from './interfaces/request.interfaces';
 
-import { AppConfig } from '../app.config';
+import { environment } from '../../environments/environment';
 
 // request service
 @Injectable()
 export class RequestService {
 
-  private apiUrl: string = AppConfig.apiUrl;
+  private apiUrl: string = environment.apiUrl;
 
   constructor(private httpClient: HttpClient) {}
 

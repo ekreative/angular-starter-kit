@@ -2,12 +2,12 @@ import { Injectable } from '@angular/core';
 import { Store } from '@ngrx/store';
 import { Router } from '@angular/router';
 import { HttpErrorResponse } from '@angular/common/http';
-import { RequestService } from '../services/request.service';
-import { PostOptions } from '../services/interfaces/request.interfaces';
-
-import {Actions, Effect, ofType} from '@ngrx/effects';
+import { Actions, Effect, ofType } from '@ngrx/effects';
 import { Observable, of } from 'rxjs';
 import { mergeMap } from 'rxjs/operators';
+
+import { RequestService } from '../services/request.service';
+import { PostOptions } from '../services/interfaces/request.interfaces';
 
 import { State } from '../reducers';
 import {
