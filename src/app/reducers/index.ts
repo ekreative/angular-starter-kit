@@ -1,8 +1,17 @@
+import {
+  ActionReducer,
+  ActionReducerMap,
+  createFeatureSelector,
+  createSelector,
+  MetaReducer
+} from '@ngrx/store';
+
 import * as loginReducer from './login.reducer';
 import * as logoutReducer from './logout.reducer';
 import * as registrationReducer from './registration.reducer';
 import * as headerReducer from './header.reducer';
 import * as dataReducer from './data.reducer';
+import { environment } from '../../environments/environment';
 
 export class State {
   public login: any;
@@ -11,11 +20,13 @@ export class State {
   public header: any;
   public data: any;
 }
-// collect all reducers
-export const Reducers = {
+
+export const reducers: ActionReducerMap<State> = {
   login: loginReducer.login,
   logout: logoutReducer.logout,
   registration: registrationReducer.registration,
   header: headerReducer.header,
   data: dataReducer.data
 };
+
+export const metaReducers: MetaReducer<State>[] = !environment.production ? [] : [];
